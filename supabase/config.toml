@@ -1,0 +1,7 @@
+project_id = "tekonpxeiwpsryctsapb"
+
+[functions.humanize-text]
+verify_jwt = false
+
+[functions.detect-ai]
+verify_jwt = false
