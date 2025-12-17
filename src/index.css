@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+:root {
+    /* Base Colors - White/Light Mode */
+    --background: 0 0% 100%; /* White background */
+    --foreground: 0 0% 4%;   /* Near-black text */
+
+    --card: 0 0% 100%;       /* White card background */
+    --card-foreground: 0 0% 4%; /* Near-black card text */
+
+    --popover: 0 0% 100%;     /* White popover background */
+    --popover-foreground: 0 0% 4%; /* Near-black popover text */
+
+    /* Primary/Accent - Black/Dark Gray for Contrast Buttons */
+    --primary: 0 0% 4%;      /* Black/Dark Gray for Contrast Buttons (like the 'Contact Us' button in the image) */
+    --primary-foreground: 0 0% 98%; /* White/Light Gray for Text on Black Button */
+
+    --secondary: 0 0% 90%;   /* Light Gray secondary background (for toggles, muted elements) */
+    --secondary-foreground: 0 0% 4%; /* Near-black text on secondary */
+
+    --muted: 0 0% 95%;       /* Very light gray for muted backgrounds */
+    --muted-foreground: 0 0% 40%; /* Medium gray for muted text */
+
+    /* Accent for glows/highlights */
+    --accent: 0 0% 90%;      /* Light gray accent background */
+    --accent-foreground: 0 0% 4%; /* Near-black accent text */
+
+    --destructive: 0 84% 60%; /* Keep destructive color for alerts */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 88%;      /* Light gray border */
+    --input: 0 0% 88%;       /* Light gray input border */
+    --ring: 0 0% 4%;         /* Dark focus rings */
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+--gradient-primary: linear-gradient(
+  135deg,
+  hsl(0, 0%, 100%) 0%,
+  hsl(0, 0%, 92%) 50%,
+  hsl(0, 0%, 70%) 100%
+);
+    --gradient-subtle: linear-gradient(180deg, hsl(0, 0%, 95%) 0%, hsl(0, 0%, 100%) 100%);
+    --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(0, 0%, 4%, 0.05), transparent); /* Subtle dark glow */
+    --gradient-hero: radial-gradient(ellipse 100% 80% at 50% 0%, hsl(0, 0%, 4%, 0.05), transparent); /* Subtle dark hero glow */
+    
+    --shadow-glow: 0 0 60px hsl(0, 0%, 4%, 0.08); /* Subtle dark shadow */
+    --shadow-card: 0 4px 24px hsl(0, 0%, 0%, 0.1); /* Lighter shadow for cards */
+    --shadow-button: 0 0 20px hsl(0, 0%, 4%, 0.1); /* Subtle dark button shadow */
+
+    --sidebar-background: 0 0% 98%; /* Very light sidebar */
+    --sidebar-foreground: 0 0% 4%;
+    --sidebar-primary: 0 0% 4%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 90%;
+    --sidebar-accent-foreground: 0 0% 4%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 0 0% 4%;
+  }
+
+  /* The .dark block should be removed or updated if you don't support dark mode. */
+  /* If you keep it, it should contain the old dark variables from my previous response */
+  .dark {
+    /* Keeping the previous dark mode definition for compatibility if theme switching exists */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 98%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .bg-gradient-glow {
+    background-image: var(--gradient-glow);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-button {
+    box-shadow: var(--shadow-button);
+  }
+
+  .glass {
+    @apply backdrop-blur-xl bg-card/50 border border-border/50;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
